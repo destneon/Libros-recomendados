@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123f36">
+<title>Dinero que crece · Desafío de educación financiera</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+:root{--pine:#123f36;--pine2:#1d6250;--mint:#d8efe2;--cream:#fbf8ef;--ink:#1c332e;--muted:#697c74;--gold:#efbe50;--orange:#eb985b;--white:#fff;--ok:#26865c;--bad:#c74f4d;--babilonia:#c08a34;--atomicos:#568b87;--rico:#318765}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:var(--cream);color:var(--ink);font-family:'DM Sans','Segoe UI',sans-serif}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #e5ac3d;outline-offset:3px}.hidden{display:none!important}
+body:before{content:"";position:fixed;top:-240px;right:-250px;width:600px;height:600px;border:1px solid #e8e8d8;border-radius:50%;pointer-events:none;z-index:-1}body:after{content:"";position:fixed;bottom:-320px;left:-250px;width:620px;height:620px;border:1px solid #e8e8d8;border-radius:50%;pointer-events:none;z-index:-1}
+.app{width:min(1180px,calc(100% - 48px));margin:auto}.site-header{height:88px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px;color:var(--pine);font-family:Outfit,sans-serif;font-weight:800;font-size:1.18rem;letter-spacing:-.035em}.brand-mark{display:grid;place-items:center;width:44px;height:44px;background:var(--pine);color:var(--gold);border-radius:14px;box-shadow:0 8px 20px #123f361a}.brand-mark svg{width:29px;height:29px}.top-pill{border:1px solid #d7e1d7;background:#fffaf3;border-radius:100px;padding:10px 16px;color:var(--pine);font-size:.82rem;font-weight:800;display:flex;align-items:center;gap:8px}.top-pill i{width:8px;height:8px;background:#67ae7e;border-radius:100%}
+.card{border-radius:30px}.start-layout{display:grid;grid-template-columns:1fr 1.02fr;gap:42px;align-items:center;padding:32px 0 18px}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #d9e4d6;background:#eaf2e6;color:var(--pine2);border-radius:100px;padding:9px 14px;font-size:.73rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.eyebrow .spark{font-size:1rem}.intro h1{font-family:Outfit,sans-serif;letter-spacing:-.06em;font-size:clamp(3.1rem,5.25vw,5.5rem);line-height:1.04;margin:22px 0 18px;font-weight:800;color:var(--pine)}.intro h1 span{color:#d49b38}.sub{max-width:500px;color:#657a70;font-size:1.1rem;line-height:1.7;margin:0 0 25px}.hero-highlights{display:flex;flex-wrap:wrap;gap:10px}.highlight{display:flex;align-items:center;gap:7px;color:var(--pine);font-size:.85rem;font-weight:800;background:white;padding:11px 14px;border:1px solid #e8e9df;border-radius:100px}.highlight b{font-size:1.1rem}
+.hero-visual{position:relative;background:radial-gradient(circle at 80% 12%,#3e9276 0%,#195846 43%,#113d33 92%);height:440px;border-radius:40px;overflow:hidden;box-shadow:0 26px 48px #17463822;isolation:isolate}.hero-visual::before{content:"";position:absolute;inset:20px;border:1px solid #ffffff25;border-radius:30px;pointer-events:none}.visual-glow{position:absolute;width:320px;height:320px;border-radius:50%;background:#f2cf7b22;top:70px;left:22%;filter:blur(8px)}.hero-svg{width:100%;height:100%;position:absolute;inset:0}.float-label{position:absolute;background:#fffdf6ed;color:var(--pine);border:1px solid #fff9d9;border-radius:18px;padding:12px 16px;box-shadow:0 12px 24px #06251e30;font-weight:800;font-size:.84rem;display:flex;gap:10px;align-items:center;backdrop-filter:blur(6px)}.float-label span{font-size:1.25rem}.float-1{top:55px;left:24px;transform:rotate(-7deg)}.float-2{bottom:45px;right:22px;transform:rotate(5deg)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:22px 0 18px}.section-kicker{color:#b47e24;font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900;margin:0 0 8px}.section-head h2,.choose h2{font:800 clamp(1.5rem,2.2vw,2rem)/1.2 Outfit,sans-serif;letter-spacing:-.04em;margin:0}.section-note{color:var(--muted);font-size:.9rem}
+.books{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.book{border:1px solid #ebece2;border-radius:24px;padding:18px 20px;background:#fff;display:flex;align-items:center;gap:16px;min-width:0;box-shadow:0 8px 20px #1d403208}.book-art{position:relative;flex:0 0 70px;height:76px;border-radius:19px;display:grid;place-items:center;overflow:hidden}.book-art svg{width:66px;height:66px}.book-art.b1{background:#fff0d5}.book-art.b2{background:#e6f2eb}.book-art.b3{background:#fce9df}.book-name{font:800 1.03rem/1.25 Outfit,sans-serif;letter-spacing:-.02em;color:var(--pine)}.book small{display:block;margin-top:7px;color:#79877e;font-size:.77rem;font-weight:600}.book-copy{min-width:0}
+.choose{margin-top:25px;background:white;border:1px solid #eaece2;border-radius:28px;padding:26px 30px;box-shadow:0 14px 42px #2046370a}.choose-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:18px}.choose-heading p{color:var(--muted);font-size:.9rem;margin:5px 0 0}.modes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.mode-btn{min-height:65px;display:flex;align-items:center;justify-content:center;gap:9px;border:2px solid #ecf0e9;border-radius:16px;color:var(--pine);background:#f8faf6;font-weight:800;font-size:.85rem;transition:.2s}.mode-btn .mode-icon{font-size:1.28rem}.mode-btn:hover{background:#eef5ed;transform:translateY(-2px)}.mode-btn.sel{background:#e9f3e8;border-color:#4a9077;box-shadow:inset 0 0 0 1px #4a907733}.primary{border:0;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-width:215px;padding:17px 24px;background:#efbf57;color:#243c2b;border-radius:17px;box-shadow:0 8px 0 #d7a449,0 14px 26px #c98c2533;font-weight:900;font-size:1rem;transition:transform .15s,box-shadow .15s}.primary:hover{transform:translateY(-3px);box-shadow:0 11px 0 #d7a449,0 17px 30px #c98c2540}.primary:active{transform:translateY(5px);box-shadow:0 3px 0 #d7a449}.choose-bottom{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:20px}.choose-tip{font-size:.83rem;color:#77847c;line-height:1.5}.choose-tip strong{color:var(--pine)}
+.footer{display:flex;justify-content:space-between;align-items:center;gap:15px;color:#7c8b7d;padding:28px 0 30px;font-size:.78rem}.footer strong{color:var(--pine)}
+/* Preguntas */
+.game-shell{max-width:940px;margin:42px auto 0}
+.quiz-banner{min-height:190px;border-radius:34px 34px 0 0;background:radial-gradient(circle at 78% 8%,#4aa985 0%,#195b49 42%,#123f36 72%);overflow:hidden;position:relative;padding:34px 38px 28px;color:white;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;box-shadow:0 18px 42px #10392f20}
+.quiz-banner::before{content:"";position:absolute;inset:16px;border:1px solid #ffffff25;border-radius:26px;pointer-events:none}
+.quiz-banner::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-70px;top:-120px;background:radial-gradient(circle,#f4d07a33 0%,transparent 65%)}
+.quiz-banner h2{font:800 2rem Outfit,sans-serif;margin:6px 0 14px;letter-spacing:-.04em}
+.quiz-banner p{margin:0;color:#d1e5d8;font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800}
+.banner-copy{position:relative;z-index:1;max-width:560px}
+.banner-mini{display:flex;flex-wrap:wrap;gap:10px}
+.banner-mini span{display:inline-flex;align-items:center;gap:8px;background:#ffffff14;border:1px solid #ffffff20;padding:10px 14px;border-radius:999px;font-size:.8rem;font-weight:800;color:#eef7f2;backdrop-filter:blur(5px)}
+.quiz-orbit{position:relative;flex:0 0 250px;height:130px;display:flex;align-items:center;justify-content:center}
+.quiz-art{font-size:4.6rem;filter:drop-shadow(0 12px 9px #001f1755);transform:rotate(-5deg);position:relative;z-index:1}
+.orbit-coin,.orbit-spark,.orbit-leaf{position:absolute;display:grid;place-items:center;background:#fffaf1e6;border:1px solid #ffe4a7a0;box-shadow:0 10px 20px #001f1720;border-radius:18px;color:#21493f}
+.orbit-coin{width:52px;height:52px;font-size:1.8rem}.orbit-spark{width:40px;height:40px;font-size:1.2rem}.orbit-leaf{width:48px;height:48px;font-size:1.5rem}
+.orbit-1{top:6px;left:18px;transform:rotate(-10deg)}.orbit-2{right:18px;top:18px;transform:rotate(8deg)}.orbit-3{left:55px;bottom:6px;transform:rotate(12deg)}.orbit-4{right:58px;bottom:10px;transform:rotate(-8deg)}
+.quiz-card{background:linear-gradient(180deg,#fff 0%,#fdfefb 100%);border:1px solid #e6ebdf;border-top:0;border-radius:0 0 34px 34px;padding:34px 36px 38px;box-shadow:0 22px 48px #20463712;position:relative;overflow:hidden}
+.quiz-card::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 14px 14px,rgba(18,63,54,.04) 2px,transparent 2px);background-size:34px 34px;opacity:.65;pointer-events:none}
+.quiz-card > *{position:relative;z-index:1}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:800;color:#49685b;font-size:.9rem}.points-pill{background:#fff3d7;color:#855a19;border-radius:100px;padding:8px 13px;box-shadow:inset 0 0 0 1px #f1deac}.bar{height:12px;background:#ebf0e9;border-radius:50px;overflow:hidden;margin:16px 0 18px;border:1px solid #e2eadd}.bar div{height:100%;width:0;background:linear-gradient(90deg,#68b78b,#e5bb50);border-radius:50px;transition:width .4s}
+.quiz-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.mini-stat{background:linear-gradient(180deg,#ffffff 0%,#f5faf4 100%);border:1px solid #e7ede4;border-radius:18px;padding:12px 14px;box-shadow:0 8px 16px #2046370a}
+.mini-stat span{display:block;color:#6f8078;font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.mini-stat strong{display:block;color:var(--pine);font:800 .98rem/1.3 Outfit,sans-serif}
+.question-shell{position:relative;background:linear-gradient(180deg,#fffdf7 0%,#ffffff 100%);border:1px solid #ece6cf;border-radius:28px;padding:22px 22px 20px;box-shadow:0 14px 28px #cfb86d12;margin-bottom:22px;overflow:hidden}
+.question-shell::before{content:"";position:absolute;right:-20px;top:-20px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,#f3d98a55 0%,transparent 70%)}
+.question-shell::after{content:"";position:absolute;left:-30px;bottom:-35px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,#d9efdf 0%,transparent 72%)}
+.question-badge{display:inline-flex;align-items:center;gap:8px;background:#eaf4e8;color:var(--pine2);border:1px solid #d4e7d3;border-radius:999px;padding:8px 14px;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.tag{display:inline-block;background:var(--babilonia);padding:9px 14px;border-radius:11px;color:white;font-size:.73rem;font-weight:800;letter-spacing:.01em;margin-bottom:14px;box-shadow:0 8px 14px #00000014}
+.question{font:800 clamp(1.6rem,3vw,2.15rem)/1.22 Outfit,sans-serif;letter-spacing:-.04em;max-width:780px;margin:0;color:#173832}
+.question-corners{position:absolute;inset:0;pointer-events:none}.question-corners span{position:absolute;display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:#ffffffca;border:1px solid #eae1bc;color:#c89a33;font-size:1.35rem;box-shadow:0 10px 14px #d7b25d18}.question-corners .qc1{top:18px;right:18px}.question-corners .qc2{bottom:18px;right:34px}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.opt{position:relative;display:flex;align-items:flex-start;gap:14px;text-align:left;padding:18px;border:2px solid #e7ede5;border-radius:22px;color:var(--ink);background:linear-gradient(180deg,#ffffff 0%,#f8fbf7 100%);font-size:.98rem;font-weight:700;min-height:102px;transition:.18s;overflow:hidden;box-shadow:0 10px 18px #20463708}
+.opt::before{content:"";position:absolute;inset:auto -20px -34px auto;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,#dcefe133 0%,transparent 70%);pointer-events:none}
+.opt:hover:not(:disabled){background:linear-gradient(180deg,#fcfffb 0%,#f0f7ec 100%);border-color:#7aaf8b;transform:translateY(-3px) scale(1.01);box-shadow:0 18px 26px #20463712}
+.letter{flex:0 0 44px;height:44px;border-radius:15px;background:linear-gradient(180deg,#edf5ea,#dbeadd);color:#285341;display:grid;place-items:center;font-weight:900;font-family:Outfit,sans-serif;font-size:1rem;box-shadow:inset 0 0 0 1px #dbe7da}
+.opt-copy{display:flex;flex-direction:column;gap:5px;min-width:0}.opt-copy strong{font-size:1rem;line-height:1.35;color:#233c35}.opt-copy small{font-size:.74rem;color:#7c8b83;font-weight:700}.opt-icon{position:absolute;right:14px;top:14px;font-size:1.05rem;opacity:.55}
+.opt.correct{border-color:var(--ok);background:linear-gradient(180deg,#f4fdf6 0%,#e5f5e9 100%)}.opt.correct .letter{background:var(--ok);color:white;box-shadow:none}.opt.wrong{border-color:var(--bad);background:linear-gradient(180deg,#fff5f3 0%,#fbe8e5 100%)}.opt.wrong .letter{background:var(--bad);color:white;box-shadow:none}.opt:disabled{cursor:default}
+.feedback{display:none;padding:18px 20px;border-radius:18px;margin-top:22px;font-weight:800;line-height:1.55;border:1px solid transparent;box-shadow:0 12px 20px #2046370d}.feedback.ok{display:block;background:linear-gradient(180deg,#eefcf1 0%,#e5f5e9 100%);color:#1b6847;border-color:#cfead5}.feedback.bad{display:block;background:linear-gradient(180deg,#fff3f1 0%,#fbe8e5 100%);color:#8c3938;border-color:#f0c5c2}#nextBtn{margin-top:24px;width:100%}
+/* Final */.result{background:#fff;text-align:center;border:1px solid #e6ebdf;max-width:760px;padding:50px 40px;margin:45px auto 0;box-shadow:0 20px 48px #20463712}.end-art{background:radial-gradient(circle,#ebf6e7 0,#ebf6e7 50%,transparent 51%);margin:auto;display:grid;place-items:center;width:180px;height:160px}.trophy{font-size:5.4rem;filter:drop-shadow(0 12px 8px #123f3620)}.result h1{font:800 2.4rem Outfit,sans-serif;letter-spacing:-.04em;margin:12px 0}.result .score{font:900 3.2rem Outfit,sans-serif;color:#c28b29;margin:16px 0}.result .msg{color:#65786e;font-size:1.1rem;line-height:1.6;max-width:450px;margin:0 auto 25px}.result .primary{margin:auto}
+
+/* Decoración adicional */
+.page-decor{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.money-rain{position:absolute;inset:0;overflow:hidden}
+.fall-item{position:absolute;top:-12vh;left:var(--x);font-size:var(--size,2rem);opacity:.35;filter:drop-shadow(0 8px 8px rgba(0,0,0,.08));animation:moneyfall var(--dur,14s) linear infinite;animation-delay:var(--delay,0s);transform:translateY(-20vh) rotate(0deg)}
+.fall-item.bill{opacity:.32}.fall-item.coin{opacity:.4}.fall-item.pig{opacity:.22}
+.side-garden{position:fixed;top:0;bottom:0;width:118px;display:flex;flex-direction:column;justify-content:space-between;padding:110px 10px 34px;z-index:0}
+.side-left{left:8px;align-items:flex-start}.side-right{right:8px;align-items:flex-end}
+.plant-bubble{display:grid;place-items:center;width:84px;height:84px;border-radius:26px;background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(239,248,235,.66));border:1px solid rgba(176,203,179,.55);box-shadow:0 14px 28px rgba(18,63,54,.08);backdrop-filter:blur(6px);font-size:2.1rem;transform:rotate(var(--rot,0deg));opacity:.92}
+.plant-bubble.small{width:68px;height:68px;font-size:1.7rem;border-radius:22px}
+.plant-bubble.large{width:96px;height:96px;font-size:2.45rem;border-radius:30px}
+.side-left .plant-bubble:nth-child(odd), .side-right .plant-bubble:nth-child(even){animation:swayLeaf 6s ease-in-out infinite}
+.side-left .plant-bubble:nth-child(even), .side-right .plant-bubble:nth-child(odd){animation:swayLeaf 7.5s ease-in-out infinite reverse}
+.app,.site-header,.start-layout,.game-shell,.result,.footer{position:relative;z-index:1}
+@keyframes moneyfall{
+  0%{transform:translate3d(0,-20vh,0) rotate(0deg);opacity:0}
+  10%{opacity:.34}
+  50%{transform:translate3d(18px,48vh,0) rotate(120deg);opacity:.42}
+  100%{transform:translate3d(-22px,120vh,0) rotate(260deg);opacity:0}
+}
+@keyframes swayLeaf{
+  0%,100%{transform:translateY(0) rotate(var(--rot,0deg))}
+  50%{transform:translateY(-8px) rotate(calc(var(--rot,0deg) + 5deg))}
+}
+
+@media(max-width:900px){.side-garden{width:88px;padding:88px 4px 24px}.plant-bubble{width:66px;height:66px;font-size:1.65rem}.plant-bubble.large{width:78px;height:78px;font-size:1.95rem}.plant-bubble.small{width:54px;height:54px;font-size:1.35rem}.start-layout{grid-template-columns:1fr 1fr;gap:22px}.hero-visual{height:360px}.intro h1{font-size:clamp(2.5rem,5vw,4rem)}.book{padding:14px;gap:10px}.book-art{flex-basis:55px;height:64px}.book-art svg{width:57px;height:57px}.book-name{font-size:.9rem}}
+@media(max-width:700px){.app{width:min(100% - 30px,560px)}.site-header{height:72px}.start-layout{display:flex;flex-direction:column;align-items:stretch;padding-top:12px;gap:26px}.intro h1{font-size:clamp(2.9rem,10vw,4.5rem);margin-top:17px}.sub{font-size:1rem}.hero-visual{height:340px}.books{grid-template-columns:1fr}.book-art{flex-basis:65px}.book-name{font-size:1rem}.section-head{margin-top:30px}.section-note{display:none}.choose{padding:22px 18px}.modes{grid-template-columns:1fr 1fr}.choose-bottom{align-items:stretch;flex-direction:column}.choose-tip{text-align:center;order:2}.primary{width:100%}.quiz-banner{padding:22px;min-height:170px;display:block}.quiz-orbit{margin:12px auto 0;height:88px;max-width:220px}.quiz-art{font-size:3.4rem}.banner-mini span{padding:8px 11px;font-size:.74rem}.quiz-card{padding:24px 20px}.quiz-stats{grid-template-columns:1fr}.question-shell{padding:18px 16px}.options{grid-template-columns:1fr}.game-shell{margin-top:15px}.result{margin-top:15px;padding:32px 18px}.footer{flex-direction:column;text-align:center;gap:5px}}
+@media(max-width:640px){.money-rain .fall-item:nth-child(n+8){display:none}.side-garden{display:none}}
+@media(max-width:380px){.top-pill{font-size:.7rem;padding:8px}.brand{font-size:1rem}.hero-visual{height:280px}.float-label{font-size:.7rem;padding:8px}.float-1{left:12px;top:30px}.float-2{right:8px;bottom:25px}.mode-btn{font-size:.73rem;gap:5px}.quiz-banner h2{font-size:1.4rem}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="page-decor" aria-hidden="true">
+  <div class="money-rain">
+    <span class="fall-item bill" style="--x:6%;--delay:-2s;--dur:14s;--size:2.2rem;">💸</span>
+    <span class="fall-item coin" style="--x:14%;--delay:-9s;--dur:18s;--size:2rem;">🪙</span>
+    <span class="fall-item bill" style="--x:23%;--delay:-5s;--dur:15s;--size:2rem;">💵</span>
+    <span class="fall-item pig" style="--x:31%;--delay:-11s;--dur:20s;--size:1.9rem;">🐷</span>
+    <span class="fall-item coin" style="--x:43%;--delay:-7s;--dur:13s;--size:2.1rem;">🪙</span>
+    <span class="fall-item bill" style="--x:54%;--delay:-1s;--dur:17s;--size:2.25rem;">💸</span>
+    <span class="fall-item coin" style="--x:67%;--delay:-12s;--dur:16s;--size:1.95rem;">🪙</span>
+    <span class="fall-item bill" style="--x:79%;--delay:-4s;--dur:14s;--size:2rem;">💵</span>
+    <span class="fall-item coin" style="--x:88%;--delay:-8s;--dur:18s;--size:2.3rem;">🪙</span>
+    <span class="fall-item bill" style="--x:95%;--delay:-6s;--dur:15s;--size:2.05rem;">💸</span>
+  </div>
+  <div class="side-garden side-left">
+    <span class="plant-bubble large" style="--rot:-5deg">🌿</span>
+    <span class="plant-bubble small" style="--rot:4deg">🌱</span>
+    <span class="plant-bubble" style="--rot:-3deg">🪴</span>
+    <span class="plant-bubble small" style="--rot:6deg">🌾</span>
+    <span class="plant-bubble large" style="--rot:-4deg">🍃</span>
+  </div>
+  <div class="side-garden side-right">
+    <span class="plant-bubble" style="--rot:4deg">🪴</span>
+    <span class="plant-bubble small" style="--rot:-4deg">🌱</span>
+    <span class="plant-bubble large" style="--rot:5deg">🌿</span>
+    <span class="plant-bubble small" style="--rot:-5deg">🍀</span>
+    <span class="plant-bubble" style="--rot:3deg">🌾</span>
+  </div>
+</div>
+
+<div class="app">
+<header class="site-header"><div class="brand"><div class="brand-mark"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 23 13 15l5 5 9-12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 8h6v6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Dinero que crece.</div><div class="top-pill"><i></i> APRENDÉ JUGANDO</div></header>
+<main>
+<section id="start">
+<div class="start-layout">
+<div class="intro"><span class="eyebrow"><span class="spark">✦</span> TU AVENTURA FINANCIERA</span><h1>Pequeñas ideas.<br><span>Grandes</span> futuros.</h1><p class="sub">Descubrí cuánto sabés sobre el ahorro, los hábitos y la libertad financiera. Tres libros, un desafío y muchas ideas para hacer crecer tu conocimiento.</p><div class="hero-highlights"><span class="highlight"><b>📚</b> 3 libros</span><span class="highlight"><b>🧠</b> 15 preguntas</span><span class="highlight"><b>🏅</b> Sumá puntos</span></div></div>
+<div class="hero-visual" role="img" aria-label="Ilustración de alcancía rosa con monedas doradas y una planta creciendo como símbolo del ahorro">
+<div class="visual-glow"></div>
+<svg class="hero-svg" viewBox="0 0 560 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs><linearGradient id="pig" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd0b8"/><stop offset="1" stop-color="#f19a91"/></linearGradient><linearGradient id="coin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffeb9c"/><stop offset="1" stop-color="#e5a832"/></linearGradient><linearGradient id="pot" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4bc7a"/><stop offset="1" stop-color="#d68a4a"/></linearGradient><filter id="shadow"><feGaussianBlur stdDeviation="9"/></filter></defs>
+<ellipse cx="292" cy="355" rx="218" ry="25" fill="#071f19" opacity=".35" filter="url(#shadow)"/>
+<!-- planta -->
+<path d="M408 236Q397 179 422 112" stroke="#91cb82" stroke-width="9" stroke-linecap="round" fill="none"/>
+<path d="M420 158Q367 160 367 114Q401 106 420 158Z" fill="#70b67b"/><path d="M421 135Q420 88 466 82Q462 120 421 135Z" fill="#b2d98b"/><path d="M409 195Q449 166 480 180Q463 210 409 195Z" fill="#55a571"/><path d="M414 183Q381 182 368 151Q398 149 414 183Z" fill="#add58b"/>
+<path d="M374 231H451L440 294Q435 305 423 305H399Q386 305 382 294Z" fill="url(#pot)"/><path d="M369 227H456V241H369Z" rx="5" fill="#f7cb8a"/>
+<!-- monedas apiladas izquierda -->
+<g stroke="#c28b2f" stroke-width="2"><rect x="97" y="282" width="71" height="20" rx="10" fill="url(#coin)"/><rect x="97" y="264" width="71" height="20" rx="10" fill="url(#coin)"/><rect x="97" y="246" width="71" height="20" rx="10" fill="url(#coin)"/><rect x="105" y="228" width="71" height="20" rx="10" fill="url(#coin)"/><rect x="119" y="210" width="71" height="20" rx="10" fill="url(#coin)"/></g><path d="M109 254h47M109 272h47M109 290h47" stroke="#fff3ba" stroke-width="3" stroke-linecap="round"/>
+<!-- alcancía -->
+<path d="M202 276l-10 50q-3 11 11 11h23l16-31M308 307l11 30h30q8 0 7-9l-7-47" fill="#ee9992" stroke="#e78b88" stroke-width="4" stroke-linejoin="round"/>
+<path d="M183 239Q173 221 158 220Q150 219 149 229Q148 240 162 238" stroke="#f1b8a2" stroke-width="9" stroke-linecap="round" fill="none"/>
+<ellipse cx="274" cy="246" rx="115" ry="83" fill="url(#pig)"/><path d="M338 188Q351 141 372 166Q388 188 367 209" fill="#f2a7a1"/><path d="M353 185Q362 167 370 180" fill="none" stroke="#d78284" stroke-width="6" stroke-linecap="round"/><path d="M204 184Q207 136 230 147Q252 157 243 184" fill="#f5a9a0"/><path d="M213 178Q219 158 228 169" stroke="#d78284" stroke-width="5" fill="none" stroke-linecap="round"/>
+<ellipse cx="365" cy="254" rx="38" ry="32" fill="#f58f8d"/><ellipse cx="352" cy="252" rx="5" ry="8" fill="#d36b73"/><ellipse cx="376" cy="252" rx="5" ry="8" fill="#d36b73"/><circle cx="331" cy="224" r="7" fill="#253d36"/><circle cx="334" cy="221" r="2.5" fill="white"/><ellipse cx="332" cy="241" rx="12" ry="6" fill="#ee8e8d" opacity=".6"/><path d="M250 173Q270 166 291 173" stroke="#c86a74" stroke-width="6" stroke-linecap="round"/>
+<!-- monedas flotando -->
+<g transform="translate(254 102) rotate(-16)"><circle r="35" fill="#c88724"/><circle r="31" fill="url(#coin)"/><circle r="24" fill="none" stroke="#fff0b8" stroke-width="2"/><text x="0" y="12" text-anchor="middle" font-size="35" font-weight="800" fill="#bf842a">$</text></g>
+<g transform="translate(329 83) rotate(23)"><circle r="22" fill="#d29129"/><circle r="19" fill="url(#coin)"/><circle r="14" fill="none" stroke="#fff0b8"/><text x="0" y="7" font-size="21" text-anchor="middle" font-weight="bold" fill="#bf842a">$</text></g>
+<g transform="translate(165 119) rotate(18)"><circle r="18" fill="#d29129"/><circle r="16" fill="url(#coin)"/><text x="0" y="6" font-size="19" text-anchor="middle" fill="#ba7e25">$</text></g>
+<path d="M116 152v22M105 163h22M475 105v20M465 115h20" stroke="#f4d98a" stroke-width="4" stroke-linecap="round"/><circle cx="468" cy="317" r="5" fill="#f5d07a"/><circle cx="91" cy="195" r="4" fill="#f5d07a"/>
+</svg>
+<div class="float-label float-1"><span>💰</span> Ahorrá hoy</div><div class="float-label float-2"><span>🌱</span> Crecé mañana</div>
+</div></div>
+<div class="section-head"><div><p class="section-kicker">LA BIBLIOTECA DEL DESAFÍO</p><h2>3 libros. Infinitas ideas.</h2></div><span class="section-note">Conocimientos que valen oro ✨</span></div>
+<div class="books">
+<article class="book"><div class="book-art b1"><svg viewBox="0 0 70 70" aria-hidden="true"><path d="M14 33 33 20 53 33V55H14Z" fill="#c18c45"/><path d="M10 32 33 16 57 32" fill="none" stroke="#8f602c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="27" y="36" width="12" height="19" rx="2" fill="#ffe0a3"/><circle cx="49" cy="18" r="12" fill="#ffcc63" stroke="#d99a38" stroke-width="2"/><text x="49" y="24" text-anchor="middle" font-weight="bold" font-size="18" fill="#b17c20">$</text></svg></div><div class="book-copy"><div class="book-name">El hombre más rico de Babilonia</div><small>George S. Clason</small></div></article>
+<article class="book"><div class="book-art b2"><svg viewBox="0 0 70 70" aria-hidden="true"><path d="M34 55V32" stroke="#39856b" stroke-width="5" stroke-linecap="round"/><path d="M35 37Q9 39 14 17Q32 15 35 37Z" fill="#78ba8a"/><path d="M34 31Q31 9 55 11Q56 30 34 31Z" fill="#3e9876"/><path d="M19 52H51L47 63H23Z" fill="#dc9b64"/><path d="M16 49H54V54H16Z" fill="#ebbd82"/></svg></div><div class="book-copy"><div class="book-name">Hábitos atómicos</div><small>James Clear</small></div></article>
+<article class="book"><div class="book-art b3"><svg viewBox="0 0 70 70" aria-hidden="true"><ellipse cx="34" cy="41" rx="23" ry="17" fill="#f2a69e"/><path d="M17 31 17 20Q27 19 27 30M44 30 54 19 55 37" fill="#f2a69e"/><ellipse cx="54" cy="43" rx="10" ry="8" fill="#e9908d"/><circle cx="51" cy="43" r="2" fill="#bf6a71"/><circle cx="58" cy="43" r="2" fill="#bf6a71"/><circle cx="45" cy="36" r="2.8" fill="#31433f"/><path d="M19 53v7M41 55v5" stroke="#df8f87" stroke-width="6" stroke-linecap="round"/><circle cx="17" cy="16" r="10" fill="#f5c35e" stroke="#dc9d36" stroke-width="2"/><text x="17" y="21" text-anchor="middle" font-size="15" font-weight="bold" fill="#b17c20">$</text></svg></div><div class="book-copy"><div class="book-name">Padre rico, padre pobre</div><small>Robert Kiyosaki</small></div></article>
+</div>
+<div class="choose"><div class="choose-heading"><div><h2>¿Qué querés aprender hoy?</h2><p>Elegí un libro o mezclá todos los desafíos.</p></div><span aria-hidden="true" style="font-size:2rem">🎯</span></div><div class="modes" role="group" aria-label="Elegir modo de juego"><button class="mode-btn sel" data-mode="todos" aria-pressed="true"><span class="mode-icon">✨</span> Todos los libros</button><button class="mode-btn" data-mode="babilonia" aria-pressed="false"><span class="mode-icon">🪙</span> Babilonia</button><button class="mode-btn" data-mode="atomicos" aria-pressed="false"><span class="mode-icon">🌱</span> Hábitos atómicos</button><button class="mode-btn" data-mode="rico" aria-pressed="false"><span class="mode-icon">🐷</span> Padre rico</button></div><div class="choose-bottom"><div class="choose-tip"><strong>Sin límite de tiempo.</strong><br>Leé, pensá y disfrutá cada respuesta.</div><button class="primary" id="startBtn">¡Empezar el desafío! <span aria-hidden="true">➜</span></button></div></div>
+</section>
+<section id="game" class="game-shell hidden" aria-label="Preguntas del desafío"><div class="quiz-banner"><div class="banner-copy"><p>DESAFÍO EN PROGRESO</p><h2>¡Tu conocimiento crece!</h2><div class="banner-mini"><span>💸 Ahorro inteligente</span><span>🌱 Crecimiento</span><span>🧠 Aprender jugando</span></div></div><div class="quiz-orbit" aria-hidden="true"><span class="orbit-coin orbit-1">🪙</span><span class="orbit-spark orbit-2">✨</span><span class="quiz-art">🐷🌱</span><span class="orbit-leaf orbit-3">🌿</span><span class="orbit-coin orbit-4">💵</span></div></div><div class="quiz-card"><div class="top"><span id="counter">Pregunta 1 de 15</span><span class="points-pill" id="points">⭐ 0 puntos</span></div><div class="bar" role="progressbar" aria-label="Progreso del cuestionario"><div id="progress"></div></div><div class="quiz-stats"><div class="mini-stat"><span>Libro</span><strong id="miniBook">Todos los libros</strong></div><div class="mini-stat"><span>Ronda</span><strong id="miniRound">1 / 15</strong></div><div class="mini-stat"><span>Puntaje</span><strong id="miniScore">0 puntos</strong></div></div><div class="question-shell"><div class="question-badge">❓ Pregunta del desafío</div><span class="tag" id="tag"></span><h2 class="question" id="question"></h2><div class="question-corners" aria-hidden="true"><span class="qc1">🪙</span><span class="qc2">🌱</span></div></div><div class="options" id="options"></div><div class="feedback" id="feedback" aria-live="polite"></div><button class="primary hidden" id="nextBtn">Siguiente ➜</button></div></section>
+<section id="end" class="card result hidden"><div class="end-art"><div class="trophy" id="trophy">🏆</div></div><p class="section-kicker">¡DESAFÍO COMPLETADO!</p><h1>¡Cada respuesta cuenta!</h1><div class="score" id="finalScore"></div><p class="msg" id="finalMsg"></p><button class="primary" id="restartBtn">↻ &nbsp; Volver a jugar</button></section>
+</main>
+<footer class="footer"><span><strong>Dinero que crece.</strong> Educación financiera para curiosos.</span><span>Hecho para aprender, compartir y crecer 🌿</span></footer>
+</div>
+<script>
+const BOOKS = {
+  babilonia:{name:"El hombre más rico de Babilonia", cls:"var(--babilonia)"},
+  atomicos:{name:"Hábitos atómicos", cls:"var(--atomicos)"},
+  rico:{name:"Padre rico, padre pobre", cls:"var(--rico)"}
+};
+
+// La respuesta correcta se marca con "ok:true". Las opciones se mezclan al jugar.
+const QUESTIONS = [
+  // --- El hombre más rico de Babilonia ---
+  {book:"babilonia", q:"¿En qué ciudad antigua transcurre la historia del libro?",
+   o:[{t:"Babilonia",ok:true},{t:"Roma"},{t:"Atenas"},{t:"El Cairo"}]},
+  {book:"babilonia", q:"¿Cómo se llama el hombre más rico de Babilonia?",
+   o:[{t:"Arkad",ok:true},{t:"Bansir"},{t:"Kobbi"},{t:"Nabucodonosor"}]},
+  {book:"babilonia", q:"Según Arkad, ¿qué parte de lo que ganas debes guardar como mínimo?",
+   o:[{t:"Una décima parte (10%)",ok:true},{t:"Todo lo que ganas"},{t:"Nada, hay que gastarlo"},{t:"La mitad (50%)"}]},
+  {book:"babilonia", q:"¿Cuál era el oficio de Bansir?",
+   o:[{t:"Constructor de carros",ok:true},{t:"Panadero"},{t:"Soldado"},{t:"Maestro"}]},
+  {book:"babilonia", q:"¿Qué enseña el libro que hay que hacer con el dinero ahorrado?",
+   o:[{t:"Esconderlo bajo tierra"},{t:"Gastarlo en fiestas"},{t:"Regalarlo todo"},{t:"Hacer que trabaje y se multiplique",ok:true}]},
+
+  // --- Hábitos atómicos ---
+  {book:"atomicos", q:"¿Quién escribió «Hábitos atómicos»?",
+   o:[{t:"Robert Kiyosaki"},{t:"James Clear",ok:true},{t:"George S. Clason"},{t:"Warren Buffett"}]},
+  {book:"atomicos", q:"¿Qué significa que un hábito sea «atómico»?",
+   o:[{t:"Que es muy peligroso"},{t:"Que es muy caro"},{t:"Que es muy pequeño y fácil de hacer",ok:true},{t:"Que solo lo hacen los científicos"}]},
+  {book:"atomicos", q:"¿Qué idea central propone el libro?",
+   o:[{t:"Cambios pequeños todos los días logran grandes resultados",ok:true},{t:"Solo los cambios gigantes sirven"},{t:"Los hábitos no se pueden cambiar"},{t:"Hay que cambiar todo en un solo día"}]},
+  {book:"atomicos", q:"¿Cuántas «leyes del cambio de comportamiento» tiene el libro?",
+   o:[{t:"Dos"},{t:"Tres"},{t:"Cuatro",ok:true},{t:"Diez"}]},
+  {book:"atomicos", q:"¿De cuánto tiempo es la «regla de los dos minutos» para empezar un hábito?",
+   o:[{t:"Dos horas"},{t:"Dos días"},{t:"Dos semanas"},{t:"Dos minutos",ok:true}]},
+
+  // --- Padre rico, padre pobre ---
+  {book:"rico", q:"¿Quién es el autor de «Padre rico, padre pobre»?",
+   o:[{t:"Robert Kiyosaki",ok:true},{t:"James Clear"},{t:"Napoleon Hill"},{t:"Arkad"}]},
+  {book:"rico", q:"Según el libro, ¿qué es un activo?",
+   o:[{t:"Algo que saca dinero de tu bolsillo"},{t:"Algo que pone dinero en tu bolsillo",ok:true},{t:"Una deuda"},{t:"Un impuesto"}]},
+  {book:"rico", q:"Según el libro, ¿qué es un pasivo?",
+   o:[{t:"Algo que saca dinero de tu bolsillo",ok:true},{t:"Algo que te da ganancias"},{t:"Un ahorro"},{t:"Una inversión"}]},
+  {book:"rico", q:"¿Qué enseña el «padre rico» sobre el dinero?",
+   o:[{t:"Que lo mejor es trabajar solo por un sueldo"},{t:"Que el dinero es malo"},{t:"Que hay que hacer que el dinero trabaje para ti",ok:true},{t:"Que nunca se debe invertir"}]},
+  {book:"rico", q:"¿Quién es el «padre pobre» en el libro?",
+   o:[{t:"El papá de su amigo Mike"},{t:"Un banquero"},{t:"Su propio papá, un hombre muy educado",ok:true},{t:"Su profesor de matemáticas"}]}
+];
+
+const $ = id => document.getElementById(id);
+let mode = "todos", list = [], idx = 0, score = 0, answered = false;
+
+const shuffle = arr => {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+const show = id => {
+  ["start","game","end"].forEach(s => $(s).classList.add("hidden"));
+  $(id).classList.remove("hidden");
+};
+
+document.querySelectorAll(".mode-btn").forEach(b => {
+  b.addEventListener("click", () => {
+    document.querySelectorAll(".mode-btn").forEach(x => x.classList.remove("sel"));
+    b.classList.add("sel");
+    mode = b.dataset.mode;
+  });
+});
+
+$("startBtn").onclick = startGame;
+$("restartBtn").onclick = () => show("start");
+$("nextBtn").onclick = () => { idx++; idx < list.length ? loadQuestion() : finish(); };
+
+function startGame(){
+  const pool = mode === "todos" ? QUESTIONS : QUESTIONS.filter(q => q.book === mode);
+  list = shuffle(pool).map(q => ({...q, o: shuffle(q.o)}));
+  idx = 0; score = 0;
+  show("game");
+  loadQuestion();
+}
+
+function loadQuestion(){
+  answered = false;
+  const q = list[idx];
+  $("counter").textContent = `Pregunta ${idx + 1} de ${list.length}`;
+  $("points").textContent = `⭐ ${score} puntos`;
+  $("miniRound").textContent = `${idx + 1} / ${list.length}`;
+  $("miniBook").textContent = BOOKS[q.book].name;
+  $("miniScore").textContent = `${score} puntos`;
+  $("progress").style.width = (idx / list.length * 100) + "%";
+  $("tag").textContent = "📖 " + BOOKS[q.book].name;
+  $("tag").style.background = BOOKS[q.book].cls;
+  $("question").textContent = q.q;
+  $("feedback").className = "feedback";
+  $("nextBtn").classList.add("hidden");
+  $("nextBtn").textContent = idx === list.length - 1 ? "Ver resultado 🏁" : "Siguiente ➜";
+
+  const box = $("options");
+  box.innerHTML = "";
+  const helperIcons = ["💡","🌟","🪙","🌱"];
+  q.o.forEach((opt, i) => {
+    const b = document.createElement("button");
+    b.className = "opt";
+    const letter = document.createElement("span");
+    letter.className = "letter";
+    letter.textContent = "ABCD"[i];
+    const copy = document.createElement("span");
+    copy.className = "opt-copy";
+    const answer = document.createElement("strong");
+    answer.textContent = opt.t;
+    const note = document.createElement("small");
+    note.textContent = "Elegí la opción que consideres correcta";
+    copy.append(answer, note);
+    const icon = document.createElement("span");
+    icon.className = "opt-icon";
+    icon.textContent = helperIcons[i];
+    b.append(letter, copy, icon);
+    b.onclick = () => choose(b, opt);
+    box.appendChild(b);
+  });
+}
+
+function choose(btn, opt){
+  if (answered) return;
+  answered = true;
+  const q = list[idx];
+  const buttons = [...document.querySelectorAll(".opt")];
+  buttons.forEach((b, i) => {
+    b.disabled = true;
+    if (q.o[i].ok) b.classList.add("correct");
+  });
+  const fb = $("feedback");
+  if (opt.ok){
+    score += 10;
+    fb.textContent = "✅ ¡Correcto! +10 puntos";
+    fb.className = "feedback ok";
+  } else {
+    btn.classList.add("wrong");
+    const right = q.o.find(o => o.ok).t;
+    fb.textContent = "❌ Incorrecto. La respuesta correcta es: " + right;
+    fb.className = "feedback bad";
+  }
+  $("points").textContent = `⭐ ${score} puntos`;
+  $("miniScore").textContent = `${score} puntos`;
+  $("nextBtn").classList.remove("hidden");
+}
+
+function finish(){
+  $("progress").style.width = "100%";
+  const max = list.length * 10;
+  const pct = score / max;
+  $("finalScore").textContent = `${score} / ${max}`;
+  let t, m;
+  if (pct === 1){ t = "🏆"; m = "¡Perfecto! Eres un verdadero experto en educación financiera."; }
+  else if (pct >= 0.7){ t = "🥇"; m = "¡Muy bien! Conoces muy bien estos libros."; }
+  else if (pct >= 0.4){ t = "🥈"; m = "¡Buen intento! Con un poco más de lectura serás un experto."; }
+  else { t = "📖"; m = "¡Sigue aprendiendo! Estos libros te pueden ayudar mucho."; }
+  $("trophy").textContent = t;
+  $("finalMsg").textContent = m;
+  show("end");
+}
+
+// Mantener los controles seleccionados accesibles.
+document.querySelectorAll('.mode-btn').forEach(btn => btn.addEventListener('click', () => {
+ document.querySelectorAll('.mode-btn').forEach(other => other.setAttribute('aria-pressed',String(other===btn)));
+}));
+</script>
+</body></html>
